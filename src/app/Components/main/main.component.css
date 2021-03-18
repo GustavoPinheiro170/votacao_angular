@@ -27,5 +27,18 @@ button {
     box-shadow: 0px 10px 15px gray;
     border-radius: 50%;
 }
+.candidato img {
+    width: 300px;
+    height: 300px;
+}
 
+@media(max-width:800px){
+    .candidato img {
+        width: 150px;
+        height: 150px;
+    }
+    mat-card {
+        width: 100%;
+    }
+}
 
