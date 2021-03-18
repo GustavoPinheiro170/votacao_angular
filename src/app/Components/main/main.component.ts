@@ -37,19 +37,19 @@ export class MainComponent implements OnInit {
     this.getLocation()
   }
 
-   RefreshArray() {
-    this.service.getVoteBolsonaro().subscribe(async(item: any) => {
+  RefreshArray() {
+    this.service.getVoteBolsonaro().subscribe(async (item: any) => {
       for (let i = 0; i < item.length; i++) {
         this.voteBolsonaro.push(item[i].ip)
-        this.locBolsonarista.push( [item[i].lat , item[i].lng])
+        this.locBolsonarista.push([item[i].lat, item[i].lng])
         this.qtVotosBolso = item.length;
       }
     })
 
-    this.service.getVoteLula().subscribe(async(item: any) => {
+    this.service.getVoteLula().subscribe(async (item: any) => {
       for (let i = 0; i < item.length; i++) {
         this.voteLula.push(item[i].ip)
-        this.locLulista.push( [item[i].lat , item[i].lng])
+        this.locLulista.push([item[i].lat, item[i].lng])
         this.qtVotosLula = item.length;
       }
     })
@@ -71,10 +71,11 @@ export class MainComponent implements OnInit {
   }
 
   votoLula() {
+    this.getLocation()
     this.voteBolsonaro.forEach((item: any) => {
-      this.getIP() 
+    
       if (item === this.ipAddress)
-      this.permission = false;
+        this.permission = false;
       return false;
     })
     return this.fetchLula()
@@ -82,12 +83,12 @@ export class MainComponent implements OnInit {
   }
 
   fetchLula() {
-    if( this.lat === undefined || this.lng === undefined) {
-     this.service.openSnackBar('Permita a localização para votar!', true) 
-     return false
+    if (this.lat === undefined || this.lng === undefined) {
+      this.service.openSnackBar('Permita a localização para votar!', true)
+      return false
     }
-    if (this.permission ) {
-     
+    if (this.permission) {
+
       return this.service.postLula(1, this.ipAddress, this.lat, this.lng).subscribe((data: any) => {
         if (data.sqlState == 23000) {
           this.service.openSnackBar('Voce já votou uma vez!', true)
@@ -103,20 +104,20 @@ export class MainComponent implements OnInit {
   }
 
   votoBolsonaro() {
+    this.getLocation()
     this.voteLula.forEach((item: any) => {
-      this.getIP() 
       if (item === this.ipAddress)
-      this.permission = false;
+        this.permission = false;
       return false;
     })
     return this.fetchBolsonaro()
   }
 
   fetchBolsonaro() {
-    if( this.lat === undefined || this.lng === undefined) {
-      this.service.openSnackBar('Permita a localização para votar!', true) 
+    if (this.lat === undefined || this.lng === undefined) {
+      this.service.openSnackBar('Permita a localização para votar!', true)
       return false
-     }
+    }
     if (this.permission) {
       return this.service.postBolsonaro(1, this.ipAddress, this.lat, this.lng).subscribe((data: any) => {
         if (data.body.sqlState == 23000) {
