@@ -22,7 +22,6 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap()
-    console.log(this.locBolsonarista)
 
   }
   iconBolso = L.icon({
@@ -57,7 +56,6 @@ export class MapComponent implements AfterViewInit {
 
     setTimeout(() =>  {
     for (let i = 0; i < this.locBolsonarista.length  ; i++) {
-       console.log(this.locBolsonarista)
       L.marker(this.locBolsonarista[i], { icon: this.iconBolso }).addTo(this.map)
         .bindPopup('Bolsonarista')
         .openPopup();
