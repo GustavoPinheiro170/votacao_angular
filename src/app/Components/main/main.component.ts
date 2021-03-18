@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
 
   votoLula() {
     this.voteBolsonaro.forEach((item: any) => {
-      this.getLocation()
+      this.getIP() 
       if (item === this.ipAddress)
       this.permission = false;
       return false;
@@ -104,6 +104,7 @@ export class MainComponent implements OnInit {
 
   votoBolsonaro() {
     this.voteLula.forEach((item: any) => {
+      this.getIP() 
       if (item === this.ipAddress)
       this.permission = false;
       return false;
