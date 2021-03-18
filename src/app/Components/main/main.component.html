@@ -1,21 +1,25 @@
 <mat-card>
-    <mat-card-title> Bolsonaro VS Lula</mat-card-title>
     <div class='container-votacao'>
         <div class='candidato'>
             <img src='../../../assets/bolsonaro.jpg'  alt='bolsonaro' />
-            <button mat-raised-button (click)='votoBolsonaro()'>Bolsonaro</button>
-           <span> {{qtVotosBolso}}</span>
+            <button mat-raised-button color="primary" (click)='votoBolsonaro()'>Bolsonaro</button>
+           <span class='votos'> {{qtVotosBolso}}</span>
         </div>
         <div class='candidato'>
             <img src='../../../assets/lula.jpg'  alt='lula' />
-            <button  mat-raised-button (click)='votoLula()' >Lula</button>
-            <span>{{qtVotosLula}}</span>
+            <button mat-raised-button color="warn" (click)='votoLula()' >Lula</button>
+            <span  class='votos'>{{qtVotosLula}}</span>
         </div>
     </div>
 
 </mat-card>
 
+<mat-card class='map-container'>
+    
 <app-map
         [locBolsonarista]='locBolsonarista'
         [locLulista]='locLulista'
 ></app-map>
+
+<app-map-marker></app-map-marker>
+</mat-card>

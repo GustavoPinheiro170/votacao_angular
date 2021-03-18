@@ -73,7 +73,7 @@ export class MainComponent implements OnInit {
   votoLula() {
     this.getLocation()
     this.voteBolsonaro.forEach((item: any) => {
-    
+
       if (item === this.ipAddress)
         this.permission = false;
       return false;
@@ -83,18 +83,17 @@ export class MainComponent implements OnInit {
   }
 
   fetchLula() {
-    if (this.lat === undefined || this.lng === undefined) {
+    if (this.lat === undefined || this.lng === undefined || this.ipAddress === 0) {
       this.service.openSnackBar('Permita a localização para votar!', true)
       return false
     }
     if (this.permission) {
-
       return this.service.postLula(1, this.ipAddress, this.lat, this.lng).subscribe((data: any) => {
         if (data.sqlState == 23000) {
           this.service.openSnackBar('Voce já votou uma vez!', true)
         } else {
           this.RefreshArray()
-          this.service.openSnackBar('Voto Realizado com sucesso!')
+          this.service.openSnackBar('Voto realizado com sucesso!')
         }
       })
     } else {
@@ -114,7 +113,7 @@ export class MainComponent implements OnInit {
   }
 
   fetchBolsonaro() {
-    if (this.lat === undefined || this.lng === undefined) {
+    if (this.lat === undefined || this.lng === undefined || this.ipAddress === 0) {
       this.service.openSnackBar('Permita a localização para votar!', true)
       return false
     }
@@ -124,7 +123,7 @@ export class MainComponent implements OnInit {
           return this.service.openSnackBar('Voce já votou uma vez!', true)
         } else {
           this.RefreshArray()
-          return this.service.openSnackBar('Voto Realizado com sucesso!')
+          return this.service.openSnackBar('Voto realizado com sucesso!')
         }
       }
       )

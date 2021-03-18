@@ -19,13 +19,6 @@ export class MapComponent implements AfterViewInit {
   @Input() locBolsonarista: any;
   @Input() locLulista: any;
 
-  coordinates: any = [
-    [-23.7, -41.7],
-    [-23.7, -45.7],
-    [-23.7, -46.7],
-    [-23.7, -47.7],
-  ];
-
 
   ngAfterViewInit(): void {
     this.initMap()
@@ -43,7 +36,7 @@ export class MapComponent implements AfterViewInit {
 
   iconLula = L.icon({
     iconUrl: '../../../assets/markerred.png',
-    iconSize: [20, 28],
+    iconSize: [20, 25],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76],
     shadowSize: [68, 95],
@@ -52,8 +45,9 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [-23.7, -46.7],
-      zoom: 5
+      center: [-23.5432, -46.6292],
+      zoom: 5,
+      minZoom: 5
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

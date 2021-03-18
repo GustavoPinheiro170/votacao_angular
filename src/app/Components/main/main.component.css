@@ -4,7 +4,7 @@ mat-card  {
 button {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 90%;
     margin: 20px;
 }
 .container-votacao {
@@ -31,7 +31,14 @@ button {
     width: 300px;
     height: 300px;
 }
-
+.votos {
+    font-size: 25px;
+}
+.map-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
 @media(max-width:800px){
     .candidato img {
         width: 150px;
@@ -39,6 +46,10 @@ button {
     }
     mat-card {
         width: 100%;
+    }
+    .map-container{
+        grid-template-columns: 1fr;
+
     }
 }
 
