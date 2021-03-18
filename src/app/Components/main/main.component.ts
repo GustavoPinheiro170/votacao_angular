@@ -32,7 +32,6 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.service.getIPAddress()
     this.RefreshArray()
     this.getIP()
     this.getLocation()
@@ -59,6 +58,7 @@ export class MainComponent implements OnInit {
   getIP() {
     this.service.getIPAddress().subscribe((res: any) => {
       this.ipAddress = res.ip;
+      console.log(this.ipAddress)
     });
   }
 
